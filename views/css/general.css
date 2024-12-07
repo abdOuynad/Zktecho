@@ -1,0 +1,230 @@
+
+  .container {
+    /* 1140px */
+    max-width: 120rem;
+    padding: 0 1.2rem;
+    /*padding: 0 3.2rem;*/
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+    column-gap: 1.4rem;
+    row-gap: 9.6rem;
+    margin-bottom: 9.6rem; 
+  }
+
+  .grid-track-colis {
+    display: grid;
+    column-gap: 6.4rem;
+    row-gap: 9.6rem;
+    margin-bottom: 9.6rem; 
+  }
+
+  .grid-norowgap {
+    display: grid;
+    column-gap: 6.4rem;
+    row-gap: 2.5rem;
+    margin-bottom: 0; 
+    margin-top: 1rem;
+  }
+  .grid-nocolgap {
+    display: grid;
+    row-gap: 9.6rem;
+    column-gap: 0;
+    margin-bottom: 9.6rem; 
+  }
+  
+  /* .grid:last-child {
+    margin-bottom: 0;
+  } */
+  
+  .grid:not(:last-child) {
+    margin-bottom: 9.6rem;
+  }
+  .grid--2-cols-contact{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--2-cols { 
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+   .grid--5-cols {
+    grid-template-columns: repeat(5, 1fr);
+  } 
+  
+  .grid--center-v {
+    align-items: center;
+  }
+
+
+  .red{
+    color: rgb(220 38 38) !important;
+  }
+
+  .logo-sty{
+    color: rgb(220 38 38) !important;
+    font-weight: 600;
+    font-size: 3rem;
+  }
+  .mb-1{
+    margin-bottom: 1rem;
+  }
+  .mb-2{
+    margin-bottom: 2rem;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 7))}
+  }
+  
+
+  .flex-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .flex-row span, .col-tick span{
+    font-size: 2rem;
+  }
+  .box{
+    display: block;
+  }
+  .box1{
+    display: none;
+  }
+  .box-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .box-details .details{
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-transform: capitalize;
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .box-details .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .map-detail img{
+    width: 100%;
+  }
+  .success{
+    color: #08da4e;
+  }
+  .danger{
+    color: red;
+  }
+  .active-colis{
+    background: #D62E2F;
+    color: #fff;
+  }
+  .statut-colis{
+    background: #fff;
+    color: #000;
+  }
+
+
+  .col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .sec{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid red;
+    border-radius: .1rem;
+    padding: .5rem .5rem;
+    width: 80%;
+    height: 6.8rem;
+    color: red;
+  }
+  .col-tick{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+  }
+  .section-how{
+    margin: 1rem;
+  }
+  .affichage-body{
+    background: #D62E2F;
+    margin: 0 !important;
+  }
+  .show-section{
+    grid-area: 1 / 1 / 2 / 4;
+  }
+  .user-affichage-section{
+    grid-area: 1 / 4 / 2 / 5;
+  }
+  .number-spec{
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+  }
+  .number-circle{
+    width: 50px; 
+    line-height: 50px; 
+    border-radius: 50%; 
+    text-align: center; 
+    background-color: #fff; 
+    color: red; 
+  }
+  .row{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  header{
+    background: #fdf2e9;
+    height: 4.5rem;
+  }
+  header .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header .row img{
+    width: 10%;
+  }
+  .date{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  
+  .height-table{
+    height: 6rem;
+    overflow-y: auto;
+  }
+  .inter-affichage-section,.liste-colis-section,.affectation-colis-section,.Paramétrage-stock-section,
+  .paramt-application,.appeler-section,.Paramétrage-section,.agence-section,
+  .service-section,.material-section,.guichet-section{
+    display: none;
+  }

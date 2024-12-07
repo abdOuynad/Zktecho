@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <link rel="stylesheet" href="css/queries-interface.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main"> 
+        <div class="left">
+          <ul>
+            <li class="menu-heading"><img src="img/46aa0e16-343d-4a58-ac49-c4d2122d028b.jpg" alt=""></li>
+            <li class="active overview"><a data-toggle="tab" href="#overview"><span class="material-symbols-outlined">person</span> All Event</a></li>
+            <li class="Guichets"><a data-toggle="tab"><span class="material-symbols-outlined">dataset</span>All Employe</a></li>
+            <li class="Matériels"><a data-toggle="tab"><span class="material-symbols-outlined">build</span>All Department</a></li>
+            <li class="Services"><a data-toggle="tab"><span class="material-symbols-outlined">info</span>Operation</a></li>
+            <!--
+            <li class="Agences"><a data-toggle="tab"><span class="material-symbols-outlined">real_estate_agent</span>Agences</a></li>
+            <li class="Paramétrage"><a data-toggle="tab"><span class="material-symbols-outlined">person</span> Paramétrage d'attentes</a></li>
+            <li class="appeler"><a data-toggle="tab"><span class="material-symbols-outlined">call</span>appeler</a></li>
+            <li class="paramètres-application"><a data-toggle="tab"><span class="material-symbols-outlined">settings</span>paramètres d'application</a></li>
+            <li class="paramètres-stock"><a data-toggle="tab"><span class="material-symbols-outlined">inventory_2</span>Paramétrage stock</a></li>
+            <li class="affectation-colis"><a data-toggle="tab"><span class="material-symbols-outlined">arrow_forward</span>affectation colis</a></li>
+            <li class="liste-colis"><a data-toggle="tab"><span class="material-symbols-outlined">receipt_long</span>liste colis</a></li>
+            <li class="inter-affichage"><a data-toggle="tab"><span class="material-symbols-outlined">dashboard</span>affichage</a></li>
+            
+            <li class="menu-heading">Pages</li>
+            <li><a data-toggle="tab" href="#candidates"><span class="material-symbols-outlined">person</span> Candidates</a></li>
+            <li><a data-toggle="tab" href="#invoices"><span class="material-symbols-outlined">person</span> Invoices</a></li>
+            <li><a data-toggle="tab" href="#single-invoice"><span class="material-symbols-outlined">person</span> Single Invoice</a></li>
+            <li><a data-toggle="tab" href="#browse"><span class="material-symbols-outlined">person</span> Browse</a></li>
+            -->
+          </ul>
+        </div> 
+        <div class="right"> 
+          <div class="tab-content">
+            <div id="overview">
+                <div class="header">
+                    <div class="row-wrap">
+                        <h4>DATABASE <%=database%> </h4>
+                        <div class="row">
+                            <a href="#"><span class="material-symbols-outlined">person</span></a>
+                            <a href="#"><span class="material-symbols-outlined">settings</span></a>
+                            <a href="#"><span class="material-symbols-outlined">notifications</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--event section-->
+                <div class="container user-section" style="display: block;">
+                    <div class="affectation-sec wrap-all">
+                        <div class="" style="margin-top: 5rem;">
+                            <table id="example1" class="display" style="width:100%;background: #fff;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Pin</th>
+                                        <th>Name</th>
+                                        <th>Device name</th>
+                                        <th>Time</th>
+                                        <th>Department</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%if (!events){%>
+                                    <% }else{ %>
+                                        <% events.forEach((event)=>{ %>
+                                            <tr>
+                                                <td># <%= event.USERID[0]%></td>
+                                                <td><%=event.BADGENUMBER%></td>
+                                                <td><%=event.NAME%></td>
+                                                <td><%=event.MachineAlias%></td>
+                                                <td><%=event.CHECKTIME%></td>
+                                                <td><%=event.DEPTNAME%></td>
+                                            </tr>
+                                        <% }) %>
+                                    <% } %>
+                                    <!--<tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011-04-25</td>
+                                    </tr>-->           
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup ajouter utilisateur--> 
+                <div class="popcard-add" id="ajouter-utilisateur">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <form action="">
+                                <div class="wrap-info"> 
+                                    <div class="wrap-row">
+                                        <div class="wrap-one"> 
+                                            <label for="">nom</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="wrap-one">
+                                            <label for="">prénom</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-half">
+                                            <label for="">agence</label>
+                                            <select name="" id="">
+                                                <option value="">agence1</option>
+                                                <option value="">agence2</option>
+                                            </select>
+                                        </div>
+                                        <div class="wrap-one-half">
+                                            <label for="">Genre</label>
+                                            <select name="" id="">
+                                                <option value="">homme</option>
+                                                <option value="">femme</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-half">
+                                            <label for="">statut</label>
+                                            <select name="" id="">
+                                                <option value="">actif</option>
+                                                <option value="">inactif</option>
+                                            </select>
+                                        </div>
+                                        <div class="wrap-one">
+                                            <label for="">username</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one">
+                                            <label for="">mot de passe</label>
+                                            <input type="password">
+                                        </div>
+                                        <div class="wrap-one">
+                                            <label for="">Rôle</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popcard-operation-pickup-details_inside-zone">
+                                    <div class="buttons">
+                                    <input type="submit" value="ajouter" class="submit-btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--employees section-->
+                <div class="container guichet-section">
+                    <div class="affectation-sec wrap-all">
+                        <div class="" style="margin-top: 5rem;">
+                            <table id="example" class="display" style="width:100%;background: #fff;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Num Badge</th>
+                                        <th>Name</th>
+                                        <th>Card Number</th>
+                                        <th>Gender</th>
+                                        <th>Department</th>
+                                        <th>Event</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if(!employees){%>
+                                    <%}else{%>
+                                        <% employees.forEach((employee)=>{%>
+                                            <tr>
+                                                <td># <%= employee.USERID%></td>
+                                                <td><%=employee.BADGENUMBER%></td>
+                                                <td><%=employee.NAME%></td>
+                                                <td><%=employee.CardNo%></td>
+                                                <td></td>
+                                                <td><%=employee.DEPTNAME%></td>
+                                                <td><a href="#ajouter-guichet" class="btn-event" onclick="Show_all_events(`<%=employee.USERID%>`)">event</a></td>
+                                            </tr>     
+                                        <%})%>
+                                    <%}%>
+                                    <!--<tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011-04-25</td>
+                                        <td><a href="#ajouter-guichet" class="btn-event">event</a></td>
+                                    </tr>-->                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup event--> 
+                <div class="popcard-add" id="ajouter-guichet">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <table id="example2" class="display" style="width:100%;background: #fff;">
+                               <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Device</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_event">
+                                    <!--<tr>
+                                        <td>#0100</td>
+                                        <td>Device</td>
+                                        <td>Time</td>
+                                    </tr>-->                         
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--department section-->
+                <div class="container material-section">
+                    <div class="affectation-sec wrap-all">
+                        <div class="" style="margin-top: 5rem;">
+                            <table id="example3" class="display" style="width:100%;background: #fff;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Department Name</th>
+                                        <th>Code</th>
+                                        <th>Number Employee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (!departments){%>
+                                    <%}else{%>
+                                        <%departments.forEach((dep)=>{%>
+                                            <tr>
+                                                <td>#<%=dep.DEPTID%></td>
+                                                <td><%=dep.DEPTNAME%></td>
+                                                <td><%=dep.DEPTID%></td>
+                                                <td></td>
+                                            </tr>
+                                        <%})%>
+                                    <%}%>
+                                    <!--<tr>
+                                        <td>#0011</td>
+                                        <td>Department name</td>
+                                        <td>61</td>
+                                        <td>999</td>
+                                    </tr>-->                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--operation section-->
+                <div class="container service-section">
+                    <div class="affectation-sec wrap-all">
+                        <div class="wr-hrd">
+                            <a href="#ajouter-matériels" class="affectation-add color-primary-2 decoration-none">
+                                <div class="add-new" id="add-vehc">
+                                    Report  
+                                </div>
+                            </a>
+                            <a href="#ajouter-matériels-1" class="affectation-add color-primary-2 decoration-none">
+                                <div class="add-new" id="add-vehc">
+                                    Report static
+                                </div>
+                            </a>
+                            <a href="#" class="affectation-add">
+                                <div class="add-new clear-data" id="add-vehc" >
+                                    Clear  
+                                </div>
+                            </a>
+                        </div>
+                        <div class="">
+                            <table id="example4" class="display" style="width:100%;background: #fff;">
+                                <thead id="thead_depcount">
+                                    <tr id="tr_thead_depcount">
+                                        <!--<th>Number Employee</th>
+                                        <th>Department</th>
+                                        <th>Dmi</th>
+                                        <th>Dmi nbr</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_depCount">
+                                    <tr id="tr_tbody_depCount">
+                                        <!--<td>#0011</td>
+                                        <td>Department name</td>
+                                        <td>61</td>
+                                        <td>999</td>-->
+                                    </tr>                     
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="" style="margin-top: 1rem;">
+                            <table id="example5" class="display" style="width:100%;background: #fff;">
+                                <thead>
+                                    <tr>
+                                        <th>Pin</th>
+                                        <th>Name</th>
+                                        <th>Present</th>
+                                        <th>Department</th>
+                                        <th>Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_calcResultat">
+                                    <!--<tr>
+                                        <td>pin</td>
+                                        <td>name</td>
+                                        <td>present</td>
+                                        <td><a href="#ajouter-services" class="btn-detail">Detail</a></td>
+                                    </tr>-->                      
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup detail--> 
+                <div class="popcard-add" id="ajouter-services">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <table id="example6" class="display" style="width:100%;background: #fff;">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Device</th>
+                                        <th>Point</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_detail">
+                                    <!--<tr>
+                                        <td>Date</td>
+                                        <td>Time</td>
+                                        <td>Device</td>
+                                        <td>Point</td>
+                                    </tr> -->                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--popup report--> 
+                <div class="popcard-add" id="ajouter-matériels">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <div style="display:flex;flex-direction: column;gap: 2rem;margin-top: 1rem;">
+                                <div class="flex-row" style="display: flex;gap: 1rem;">
+                                    <div class="flex-row" style="gap: .5rem;">
+                                        <label for="">From</label>
+                                        <input type="date" class="int" id="start">
+                                    </div>
+                                    <div class="flex-row" style="gap: .5rem;">
+                                        <label for="">To</label>
+                                        <input type="date" class="int" id="end">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <a class="submit-btn-green" id="report_submit">Report</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--popup of the report static when we choice the start date and fixed the end date by 100 days-->
+                <div class="popcard-add" id="ajouter-matériels-1">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <div style="display:flex;flex-direction: column;gap: 2rem;margin-top: 1rem;">
+                                <div class="flex-row" style="display: flex;gap: 1rem;">
+                                    <div class="flex-row" style="gap: .5rem;">
+                                        <label for="">From</label>
+                                        <input type="date" class="int" id="start_date">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <a class="submit-btn-green" id="report_submit_plus">Report</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!--agences section-->
+                <div class="container agence-section">
+                    <div class="affectation-sec wrap-all">
+                        <a href="#ajouter-agences" class="affectation-add color-primary-2 decoration-none">
+                            <div class="add-new" id="add-vehc">
+                                <span class="material-symbols-outlined">add</span>
+                                ajouter agence  
+                            </div>
+                        </a>
+                        <div class="group-elements">
+                            <div class="voir-elements">
+                                <p>voir</p>
+                                <select name="" id="">
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">15</option>
+                                </select>
+                            </div>
+                            <div class="search-element">
+                                <p>rechercher</p>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <th>Libellé</th>
+                                    <th>Wilaya</th>
+                                    <th>Commune</th>
+                                    <th>Manager</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Libelle</td>
+                                        <td>alger</td>
+                                        <td>alger</td>
+                                        <td>manager</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Libelle</td>
+                                        <td>alger</td>
+                                        <td>alger</td>
+                                        <td>manager</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Libelle</td>
+                                        <td>alger</td>
+                                        <td>alger</td>
+                                        <td>manager</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <a href="#" class="pgn">&laquo;</a>
+                            <a href="#" class="pgn active">1</a>
+                            <a href="#" class="pgn">2</a>
+                            <a href="#" class="pgn">3</a>
+                            <a href="#" class="pgn">4</a>
+                            <a href="#" class="pgn">5</a>
+                            <a href="#" class="pgn">6</a>
+                            <a href="#" class="pgn">&raquo;</a>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup ajouter agences--> 
+                <div class="popcard-add" id="ajouter-agences">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <form action="">
+                                <div class="wrap-info"> 
+                                    <div class="wrap-row">
+                                        <div class="wrap-one">
+                                            <label for="">Libellé</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="wrap-one"> 
+                                            <label for="">Adresse</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-half">
+                                            <label for="">Wilaya</label>
+                                            <select name="" id="">
+                                                <option value="">Wilaya1</option>
+                                                <option value="">Wilaya2</option>
+                                            </select>
+                                        </div>
+                                        <div class="wrap-one-half">
+                                            <label for="">Commune</label>
+                                            <select name="" id="">
+                                                <option value="">Commune1</option>
+                                                <option value="">Commune2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one">
+                                            <label for="">Manager</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popcard-operation-pickup-details_inside-zone">
+                                    <div class="buttons">
+                                    <input type="submit" value="ajouter" class="submit-btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Paramétrage files d'attentes section-->
+                <div class="container Paramétrage-section">
+                    <div class="affectation-sec wrap-all">
+                        <a href="#ajouter-Paramétrage" class="affectation-add color-primary-2 decoration-none">
+                            <div class="add-new" id="add-vehc">
+                                <span class="material-symbols-outlined">add</span>
+                                ajouter Paramétrage  
+                            </div>
+                        </a>
+                        <div class="group-elements">
+                            <div class="voir-elements">
+                                <p>voir</p>
+                                <select name="" id="">
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">15</option>
+                                </select>
+                            </div>
+                            <div class="search-element">
+                                <p>rechercher</p>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <th>agence</th>
+                                    <th>Libellé</th>
+                                    <th>Capacité max</th>
+                                    <th>Statut</th>
+                                    <th>Services</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libelle</td>
+                                        <td>max</td>
+                                        <td>actif</td>
+                                        <td>service</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libelle</td>
+                                        <td>max</td>
+                                        <td>actif</td>
+                                        <td>service</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libelle</td>
+                                        <td>max</td>
+                                        <td>actif</td>
+                                        <td>service</td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <a href="#" class="pgn">&laquo;</a>
+                            <a href="#" class="pgn active">1</a>
+                            <a href="#" class="pgn">2</a>
+                            <a href="#" class="pgn">3</a>
+                            <a href="#" class="pgn">4</a>
+                            <a href="#" class="pgn">5</a>
+                            <a href="#" class="pgn">6</a>
+                            <a href="#" class="pgn">&raquo;</a>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup ajouter Paramétrage files d'attentes--> 
+                <div class="popcard-add" id="ajouter-Paramétrage">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <form action="">
+                                <div class="wrap-info"> 
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-half">
+                                            <label for="">agence</label>
+                                            <select name="" id="">
+                                                <option value="">agence1</option>
+                                                <option value="">agence2</option>
+                                            </select>
+                                        </div>
+                                        <div class="wrap-one-half"> 
+                                            <label for="">Libellé</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-half">
+                                            <label for="">Capacité max</label>
+                                            <input type="number">
+                                        </div>
+                                        <div class="wrap-one-half">
+                                            <label for="">Statut</label>
+                                            <select name="" id="">
+                                                <option value="">actif</option>
+                                                <option value="">inactif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one">
+                                            <form>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                                    <label for="vehicle1"> Récupérer un colis </label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> Envoyer un colis</label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> Service commerciale</label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> Paiement</label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> Récupérer un retour</label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                    <label for="vehicle2"> Réclamation</label>
+                                                </div>
+                                                <div class="wrap-row">
+                                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                                    <label for="vehicle3"> Expédition</label>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popcard-operation-pickup-details_inside-zone">
+                                    <div class="buttons">
+                                    <input type="submit" value="ajouter" class="submit-btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--appeler section-->
+                <div class="container appeler-section">
+                    <div class="wrap-col">
+                        <h2>numéro de guchet</h2>
+                        <div class="contenue">
+                            <h3>numéro de dernier client appelé: 200</h3>
+                            <a href="#!" class="btn btn-red-1">appeler le prochain client</a>
+                            <a href="#prochaine-client" class="btn btn-white">appeler par numéro</a>
+                            <a href="#suivi-colis" class="btn btn-red-1">suivi de colis</a>
+                            <a href="#remise-direct" class="btn btn-white">remise direct</a>
+                        </div>
+                    </div>
+
+                    <!--popup prochaine client--> 
+                    <div class="popcard-add" id="prochaine-client">
+                        <div class="popcard-add_inside">
+                            <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                            <h2 class="popcard-add_inside-title"></h2>
+                            <div class="popcard-add_inside-form">
+                                <form action="">
+                                    <div class="wrap-info"> 
+                                        <div class="table-wrap">
+                                            <table>
+                                                <thead>
+                                                    <th>numéro</th>
+                                                    <th>appeler</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td><button class="submit-btn">appeler</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="popcard-operation-pickup-details_inside-zone">
+                                        <!--
+                                        <div class="buttons">
+                                        <input type="submit" value="ajouter" class="submit-btn">
+                                        </div>
+                                        -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--popup suivi colis--> 
+                    <div class="popcard-add" id="suivi-colis">
+                        <div class="popcard-add_inside">
+                            <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                            <h2 class="popcard-add_inside-title"></h2>
+                            <div class="popcard-add_inside-form">
+                                <form action="">
+                                    <div class="wrap-info"> 
+                                        <div class="wrap-row">
+                                            <div class="wrap-one"> 
+                                                <label for="">tracking</label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                        <div class="table-wrap">
+                                            <table>
+                                                <thead>
+                                                    <th>date du statut</th>
+                                                    <th>statut</th>
+                                                    <th>emplacement</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>10/01/2020</td>
+                                                        <td>active</td>
+                                                        <td>emplacement</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10/01/2020</td>
+                                                        <td>active</td>
+                                                        <td>emplacement</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10/01/2020</td>
+                                                        <td>active</td>
+                                                        <td>emplacement</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10/01/2020</td>
+                                                        <td>active</td>
+                                                        <td>emplacement</td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="popcard-operation-pickup-details_inside-zone">
+                                        <div class="buttons">
+                                        <input type="submit" value="submit" class="submit-btn">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--popup prochaine client--> 
+                    <div class="popcard-add" id="remise-direct">
+                        <div class="popcard-add_inside">
+                            <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                            <h2 class="popcard-add_inside-title"></h2>
+                            <div class="popcard-add_inside-form">
+                                <form action="">
+                                    <div class="wrap-info"> 
+                                        <div class="wrap-row">
+                                            <div class="wrap-one"> 
+                                                <label for="">tracking</label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popcard-operation-pickup-details_inside-zone">
+                                        <div class="buttons">
+                                        <input type="submit" value="valider" class="submit-btn">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--parametre d'application-->
+                <div class="container paramt-application">
+                    <h1></h1>
+                    <div class="detail-form">
+                        <h3 class="heading-primary">paramètres d'application</h3>
+                        <div class="col">
+                            <div class="grp">
+                                <div class="gp">
+                                    <label for="">Nom agence</label>
+                                    <input type="text">
+                                </div>
+                                <div class="gp">
+                                    <label for="">Nom de l’agence sur ticket</label>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="grp">
+                                <div class="gp">
+                                    <label for="">Adresse</label>
+                                    <input type="text">
+                                </div>
+                                <div class="gp">
+                                    <label for="">Wilaya</label>
+                                    <select name="" id="">
+                                        <option value="">blida</option>
+                                        <option value="">alger</option>
+                                        <option value="">oran</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grp">
+                                <div class="gp">
+                                    <label for="">Commune</label>
+                                    <select name="" id="">
+                                        <option value="">alger</option>
+                                        <option value="">alger</option>
+                                        <option value="">alger</option>
+                                    </select>
+                                </div>
+                                <div class="gp">
+                                    <label for="">Manager</label>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="submit-container">
+                        <input type="submit" value="ajouter" class="submit-btn">
+                    </div>
+                </div>
+
+                <!--Paramétrage stock section-->
+                <div class="container Paramétrage-stock-section">
+                    <div class="affectation-sec wrap-all">
+                        <a href="#ajouter-stock" class="affectation-add color-primary-2 decoration-none">
+                            <div class="add-new" id="add-vehc">
+                                <span class="material-symbols-outlined">add</span>
+                                ajouter stock  
+                            </div>
+                        </a>
+                        <div class="group-elements">
+                            <div class="voir-elements">
+                                <p>voir</p>
+                                <select name="" id="">
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">15</option>
+                                </select>
+                            </div>
+                            <div class="search-element">
+                                <p>rechercher</p>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <th>agence</th>
+                                    <th>Libellé box</th>
+                                    <th>Imprimer</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libellé box</td>
+                                        <td><a href="#"><span class="material-symbols-outlined danger">print</span></a></td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libellé box</td>
+                                        <td><a href="#"><span class="material-symbols-outlined danger">print</span></a></td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>agence</td>
+                                        <td>Libellé box</td>
+                                        <td><a href="#"><span class="material-symbols-outlined danger">print</span></a></td>
+                                        <td class="txt-center"><span class="material-symbols-outlined">more_horiz</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <a href="#" class="pgn">&laquo;</a>
+                            <a href="#" class="pgn active">1</a>
+                            <a href="#" class="pgn">2</a>
+                            <a href="#" class="pgn">3</a>
+                            <a href="#" class="pgn">4</a>
+                            <a href="#" class="pgn">5</a>
+                            <a href="#" class="pgn">6</a>
+                            <a href="#" class="pgn">&raquo;</a>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--popup ajouter stock--> 
+                <div class="popcard-add" id="ajouter-stock">
+                    <div class="popcard-add_inside">
+                        <a class="popcard-add_inside-close" id="close-vehc" href="#">&#10006;</a>
+                        <h2 class="popcard-add_inside-title"></h2>
+                        <div class="popcard-add_inside-form">
+                            <form action="">
+                                <div class="wrap-info"> 
+                                    <div class="wrap-row">
+                                        <div class="wrap-one-full">
+                                            <label for="">agence</label>
+                                            <select name="" id="">
+                                                <option value="">agence1</option>
+                                                <option value="">agence2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one"> 
+                                            <label for="">Prefix</label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="wrap-row">
+                                        <div class="wrap-one">
+                                            <label for="">nombre de box</label>
+                                            <input type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popcard-operation-pickup-details_inside-zone">
+                                    <div class="buttons">
+                                    <input type="submit" value="ajouter" class="submit-btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--affectation colis section-->
+                <div class="container affectation-colis-section">
+                    <form action="">
+                    <div class="grid grid--5-cols grid--start-v mt-2">
+                            <div class="detail-form fst">
+                                <div class="col">
+                                    <label for="">box</label>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="detail-form scd">
+                                <div class="col">
+                                    <label for="">tracking</label>
+                                    <input type="text">
+                                </div>
+                                <div class="col table-wrap scroll-height">
+                                    <table>
+                                        <thead>
+                                            <th>n de tracking</th>
+                                            <th>client</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>client</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col">
+                                    <input type="submit" value="Enregistrer" class="submit-btn-small">
+                                </div>
+                            </div>
+                    </div>
+                </form>
+                </div>
+
+                <!--liste colis section-->
+                <div class="container liste-colis-section">
+                    <div class="affectation-sec wrap-all">
+                        <div class="filter-wrap">
+                            <div class="filter-iner-wrap">
+                                <input type="text" class="input-filter" placeholder="agence">
+                                <select name="" id="" class="input-filter">
+                                    <option value="">statut</option>
+                                </select>
+                                <input type="date" class="input-filter">
+                                <input type="date" class="input-filter">
+                                <a href="#"><span class="material-symbols-outlined search-btn">filter_alt</span></a>
+                            </div>
+                            <div>
+                                <button class="submit-btn-green">Excel</button>
+                            </div>
+                        </div>
+                        <div class="group-elements">
+                            <div class="voir-elements">
+                                <p>voir</p>
+                                <select name="" id="">
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">15</option>
+                                </select>
+                            </div>
+                            <div class="search-element">
+                                <p>rechercher</p>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <th>N° tracking</th>
+                                    <th>indicateur de stock</th>
+                                    <th>date entrée en stock</th>
+                                    <th>date sortie de stock</th>
+                                    <th>statut</th>
+                                    <th>Imprimer</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>123</td>
+                                        <td>stock1</td>
+                                        <td>01/01/2000</td>
+                                        <td>01/01/2000</td>
+                                        <td>actif</td>
+                                        <td><a href="#"><span class="material-symbols-outlined danger">print</span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>123</td>
+                                        <td>stock1</td>
+                                        <td>01/01/2000</td>
+                                        <td>01/01/2000</td>
+                                        <td>actif</td>
+                                        <td><a href="#"><span class="material-symbols-outlined danger">print</span></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <a href="#" class="pgn">&laquo;</a>
+                            <a href="#" class="pgn active">1</a>
+                            <a href="#" class="pgn">2</a>
+                            <a href="#" class="pgn">3</a>
+                            <a href="#" class="pgn">4</a>
+                            <a href="#" class="pgn">5</a>
+                            <a href="#" class="pgn">6</a>
+                            <a href="#" class="pgn">&raquo;</a>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <!--interface affichage section-->
+                <div class="container inter-affichage-section">
+                    <div class="container grid grid--4-cols">
+                        <div class="show-section">
+                            <img src="img/yal88.jpg" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                        <div class="user-affichage-section">
+                            <div class="col">
+                                <div class="sec">
+                                    <div class="col">
+                                        <div class="flex-row">
+                                            <h3 class="">ticket</h3>
+                                            <h3>guichet</h3>
+                                        </div>
+                                        <div class="flex-row">
+                                            <h3 class="">ticket</h3>
+                                            <h3>guichet</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sec">
+                                    <div class="col">
+                                        <div class="flex-row">
+                                            <h2 class="number-spec">150</h2>
+                                            <h3 class="number-circle">4</h3>
+                                        </div>
+                                        <div class="flex-row">
+                                            <div class="row">
+                                                <span class="material-symbols-outlined">chair</span>
+                                                <h3>7</h3>
+                                            </div>
+                                            <span class="material-symbols-outlined">groups</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sec">
+                                    <div class="col">
+                                        <div class="flex-row">
+                                            <h2 class="number-spec">0</h2>
+                                            <h class="number-circle"3>0</h3>
+                                        </div>
+                                        <div class="flex-row">
+                                            <div class="row">
+                                                <span class="material-symbols-outlined">chair</span>
+                                                <h3>5</h3>
+                                            </div>
+                                            <span class="material-symbols-outlined">point_of_sale</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sec">
+                                    <div class="col">
+                                        <div class="flex-row">
+                                            <h2 class="number-spec">0</h2>
+                                            <h3 class="number-circle">0</h3>
+                                        </div>
+                                        <div class="flex-row">
+                                            <div class="row">
+                                                <span class="material-symbols-outlined">chair</span>
+                                                <h3>5</h3>
+                                            </div>
+                                            <span class="material-symbols-outlined">point_of_sale</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+      <script src="js/event.js"></script>
+      <script src="js/report.js"></script>
+      <script src="js/report_static.js"></script>
+      <script src="js/script.js"></script>
+</body>
+</html>
